@@ -11,7 +11,7 @@ import com.prototypeplatform.game.screens.PlayScreen;
 public class GamePro extends Game {
 	public SpriteBatch batch;
 	public static int V_WIDTH = 400; // Virtual width
-	public static int V_HEIGHT = 208; // Virtual Height
+	public static int V_HEIGHT = 180; // Virtual Height
 	public static final float PPM  = 100f;
 
 	
