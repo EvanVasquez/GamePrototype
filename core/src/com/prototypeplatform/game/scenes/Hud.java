@@ -7,11 +7,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.prototypeplatform.game.GamePro;
 
-public class Hud {
+public class Hud implements Disposable {
     public Stage stage;
     private Viewport viewPort; // new camera for the hud, stays only in one place.
 
@@ -62,5 +63,10 @@ public class Hud {
 //        table.add(countdownLabel).expand().top();
 
         stage.addActor(table); //adds table to stage.
+    }
+
+    @Override
+    public void dispose() {
+        stage.dispose();
     }
 }
