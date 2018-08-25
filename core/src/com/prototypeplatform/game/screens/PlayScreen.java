@@ -120,6 +120,7 @@ public class PlayScreen implements Screen {
 //            gamecam.position.x += 100 * dt;
 ////            gamecam.position.y -= 50 * dt;
 //        }
+
     }
 
     public void update(float dt){
@@ -127,8 +128,11 @@ public class PlayScreen implements Screen {
 
         world.step(1/60f,6,2);
 
+        float yPos = (float) (player.b2body.getPosition().y + 0.25);
         gamecam.position.x = player.b2body.getPosition().x;
-        gamecam.position.y = player.b2body.getPosition().y;
+        gamecam.position.y = yPos;
+
+
 
         gamecam.update();
 
