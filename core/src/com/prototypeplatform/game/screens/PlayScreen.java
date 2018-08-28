@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.CircleMapObject;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
@@ -47,6 +48,8 @@ public class PlayScreen implements Screen {
     private Viewport gamePort;
     private Hud hud;
 
+    private TextureAtlas atlas;
+
     private character player;
 
     // variables used for the Tiled Map.
@@ -65,6 +68,7 @@ public class PlayScreen implements Screen {
     private Box2DDebugRenderer b2dr;
 
     public PlayScreen(GamePro game){
+        atlas = new TextureAtlas("MainCharacter.atlas");
         this.game = game;
 
         // this is the creation of the camera.
@@ -89,7 +93,7 @@ public class PlayScreen implements Screen {
         b2dr = new Box2DDebugRenderer();
 
         //creating the charater.
-        player = new character(world);
+        player = new character(world,this);
 
         new B2WorldCreator(world,map);
 
@@ -100,6 +104,11 @@ public class PlayScreen implements Screen {
     public void show() {
 
     }
+
+    public TextureAtlas getAtlas() {
+        return atlas;
+    }
+
     public void handleInput(float dt){
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
@@ -155,6 +164,10 @@ public class PlayScreen implements Screen {
         b2dr.render(world, gamecam.combined);
 
 
+        game.batch.setProjectionMatrix(gamecam.combined);
+        game.batch.begin();
+        player.draw(game.batch);
+        game.batch.end();
 
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
