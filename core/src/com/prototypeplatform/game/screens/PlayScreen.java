@@ -68,7 +68,7 @@ public class PlayScreen implements Screen {
     private Box2DDebugRenderer b2dr;
 
     public PlayScreen(GamePro game){
-        atlas = new TextureAtlas("MainCharacter.atlas");
+        atlas = new TextureAtlas("MainCharacters.atlas");
         this.game = game;
 
         // this is the creation of the camera.
@@ -92,21 +92,21 @@ public class PlayScreen implements Screen {
         world = new World(new Vector2(0,-10), true);
         b2dr = new Box2DDebugRenderer();
 
+        new B2WorldCreator(world,map);
+
         //creating the charater.
         player = new character(world,this);
 
-        new B2WorldCreator(world,map);
-
-    }
-
-
-    @Override
-    public void show() {
 
     }
 
     public TextureAtlas getAtlas() {
         return atlas;
+    }
+
+    @Override
+    public void show() {
+
     }
 
     public void handleInput(float dt){
@@ -136,6 +136,7 @@ public class PlayScreen implements Screen {
         handleInput(dt);
 
         world.step(1/60f,6,2);
+        player.update(dt);
 
         float yPos = (float) (player.b2body.getPosition().y + 0.25);
         gamecam.position.x = player.b2body.getPosition().x;

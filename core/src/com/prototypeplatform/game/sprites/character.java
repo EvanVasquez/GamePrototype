@@ -17,13 +17,17 @@ public class character extends Sprite {
     private TextureRegion idleCharacter;
 
     public character(World world, PlayScreen screen){
-        super(screen.getAtlas().findRegion("i8aic2"));
+        super(screen.getAtlas().findRegion("second"));
         this.world = world;
         defineCharacter();
-        idleCharacter = new TextureRegion(getTexture(),2,2,16,16);
-        setBounds(0,0,16/GamePro.PPM, 16/GamePro.PPM);
+        idleCharacter = new TextureRegion(getTexture(),12,20,40,80);
+        setBounds(0,0,16/(GamePro.PPM -20 ), 16/(GamePro.PPM - 50 ));
         setRegion(idleCharacter);
     }
+    public void update(float dt){
+        setPosition(b2body.getPosition().x - getWidth()/2, b2body.getPosition().y - getHeight()/2);
+    }
+
     public void defineCharacter(){
         BodyDef bdef = new BodyDef();
         bdef.position.set((32/ GamePro.PPM),(385/ GamePro.PPM));

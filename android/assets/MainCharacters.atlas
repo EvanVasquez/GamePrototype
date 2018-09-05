@@ -1,0 +1,20 @@
+
+MainCharacters.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+first
+  rotate: false
+  xy: 552, 20
+  size: 548, 1081
+  orig: 548, 1081
+  offset: 0, 0
+  index: -1
+second
+  rotate: false
+  xy: 2, 2
+  size: 548, 1099
+  orig: 548, 1099
+  offset: 0, 0
+  index: -1
