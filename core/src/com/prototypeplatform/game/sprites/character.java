@@ -20,12 +20,12 @@ public class character extends Sprite {
         super(screen.getAtlas().findRegion("second"));
         this.world = world;
         defineCharacter();
-        idleCharacter = new TextureRegion(getTexture(),12,20,40,80);
-        setBounds(0,0,16/(GamePro.PPM -20 ), 16/(GamePro.PPM - 50 ));
+        idleCharacter = new TextureRegion(getTexture(),14,26,40,75);
+        setBounds(0,0,16/(GamePro.PPM -35 ), 16/(GamePro.PPM - 45));
         setRegion(idleCharacter);
     }
     public void update(float dt){
-        setPosition(b2body.getPosition().x - getWidth()/2, b2body.getPosition().y - getHeight()/2);
+        setPosition(b2body.getPosition().x - getWidth()/2, b2body.getPosition().y - getHeight()/2 );
     }
 
     public void defineCharacter(){
@@ -36,7 +36,7 @@ public class character extends Sprite {
 
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
-        shape.setRadius(5/ GamePro.PPM);
+        shape.setRadius(7/ GamePro.PPM);
 
         fdef.shape = shape;
         b2body.createFixture(fdef);
