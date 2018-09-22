@@ -68,7 +68,7 @@ public class character extends Sprite {
 
         //Original coordinates for main character when idle (x:8,y:30,wid: 50, height:75)
         //the y works in multiples of 80, x is 42(i think).
-        idleCharacter = new TextureRegion(getTexture(),  211+45*3,190,48,75);
+        idleCharacter = new TextureRegion(getTexture(),  8,30,45,75);
         setBounds(0,0,16/(GamePro.PPM -35 ), 16/(GamePro.PPM - 35));
         setRegion(idleCharacter);
     }
@@ -112,13 +112,15 @@ public class character extends Sprite {
         if(b2body.getLinearVelocity().y > 0){
             return State.JUMPING;
         }
-        else if(b2body.getLinearVelocity().y < 0){
+        else if(b2body.getLinearVelocity().y < 0 && previousState == State.JUMPING){
+            System.out.println("FAM you should not be seeing this");
             return State.FALLING;
         }
         else if(b2body.getLinearVelocity().x != 0){
             return State.RUNNNING;
         }
-        return State.STANDING;
+        else{return State.STANDING;}
+
     }
 
     public void defineCharacter(){
