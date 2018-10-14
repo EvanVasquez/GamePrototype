@@ -98,6 +98,7 @@ public class PlayScreen implements Screen {
         //creating the charater.
         player = new character(world,this);
 
+       // world.setContactListener(new WorldContactListener());
 
     }
 
@@ -113,7 +114,7 @@ public class PlayScreen implements Screen {
     public void handleInput(float dt){
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
-            player.b2body.applyLinearImpulse(new Vector2(0, 2.2f), player.b2body.getWorldCenter(), true);
+            player.b2body.applyLinearImpulse(new Vector2(0, 2.7f), player.b2body.getWorldCenter(), true);
         }
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2 ){

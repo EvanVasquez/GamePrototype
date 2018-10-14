@@ -54,7 +54,7 @@ public class Hud implements Disposable {
         worldLabel = new Label("World 1", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         PlayerNameLabel = new Label("This is the HUD", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
-        table.add(PlayerNameLabel).expandX().top();
+      //  table.add(PlayerNameLabel).expandX().top();
 //        table.add(worldLabel).expandX().top();
 //        table.add(timeLabel).expandX().top();
 //        table.row(); //makes a new row for everything else;
